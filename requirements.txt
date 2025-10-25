@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+tensorflow
+opencv-python
+fastapi
+uvicorn
+python-dotenv
