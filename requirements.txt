@@ -6,3 +6,4 @@ opencv-python
 fastapi
 uvicorn
 python-dotenv
+Pillow
