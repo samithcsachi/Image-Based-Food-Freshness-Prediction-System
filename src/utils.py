@@ -4,6 +4,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from PIL import Image
 import random
+import cv2
+import numpy as np 
 
 
 def raw_img_dir(raw_data_dir, category_names):
@@ -60,3 +62,64 @@ def show_image_by_path(path):
     plt.axis("off")
     plt.title(str(path))
     plt.show()
+
+
+def plot_image_sizes(image_paths_dict):
+    widths, heights = [], []
+
+    for cls, paths in image_paths_dict.items():
+        for p in paths:
+            img = Image.open(p)
+            w, h = img.size
+            widths.append(w)
+            heights.append(h)
+
+    plt.figure(figsize=(8,6))
+    plt.scatter(widths, heights, alpha=0.3)
+    plt.xlabel("Width")
+    plt.ylabel("Height")
+    plt.title("Image Resolution Distribution")
+    plt.show()
+
+    plt.figure(figsize=(8,4))
+    plt.hist([w/h for w,h in zip(widths,heights)], bins=30)
+    plt.title("Aspect Ratio Distribution")
+    plt.xlabel("Aspect Ratio (W/H)")
+    plt.show()
+
+
+
+def plot_color_histogram(img_path):
+    img = np.array(Image.open(img_path))
+
+    colors = ('r','g','b')
+    plt.figure(figsize=(8,4))
+
+    for i, col in enumerate(colors):
+        plt.hist(img[:,:,i].ravel(), bins=256, alpha=0.5, label=f'{col} channel')
+
+    plt.legend()
+    plt.title(f"Color Histogram: {img_path}")
+    plt.show()
+
+
+def compute_blur_score(img_path):
+    img = cv2.imread(str(img_path), cv2.IMREAD_GRAYSCALE)
+    return cv2.Laplacian(img, cv2.CV_64F).var()
+
+def plot_blur_distribution(image_paths_dict):
+    blur_scores = []
+
+    for cls, paths in image_paths_dict.items():
+        for p in paths:
+            blur_scores.append(compute_blur_score(p))
+
+    plt.figure(figsize=(8,4))
+    plt.hist(blur_scores, bins=40)
+    plt.title("Blur Score Distribution (Laplacian Variance)")
+    plt.xlabel("Sharpness Score")
+    plt.ylabel("Count")
+    plt.show()
+
+
+
