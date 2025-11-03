@@ -7,4 +7,4 @@ fastapi
 uvicorn
 python-dotenv
 Pillow
-imagehash
+scikit-learn
