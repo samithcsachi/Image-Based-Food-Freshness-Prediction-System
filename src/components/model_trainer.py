@@ -31,19 +31,19 @@ class ModelTrainer:
     def load_data(self, img_size=(224, 224), batch_size=32):
         train_ds = tf.keras.utils.image_dataset_from_directory(
             self.processed_data_dir / "train",
-            label_mode="categorical",
+            label_mode="int",
             image_size=img_size,
             batch_size=batch_size
         )
         val_ds = tf.keras.utils.image_dataset_from_directory(
             self.processed_data_dir / "val",
-            label_mode="categorical",
+            label_mode="int",
             image_size=img_size,
             batch_size=batch_size
         )
         test_ds = tf.keras.utils.image_dataset_from_directory(
             self.processed_data_dir / "test",
-            label_mode="categorical",
+            label_mode="int",
             image_size=img_size,
             batch_size=batch_size,
             shuffle=False
