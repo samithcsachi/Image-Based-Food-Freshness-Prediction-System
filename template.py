@@ -11,6 +11,7 @@ list_of_paths = [
     "src/components/data_ingestion.py",
     "src/components/data_transformation.py",
     "src/components/model_trainer.py",
+    "src/components/category_trainer.py"
     "src/components/model_evaluation.py",
   
     "src/pipeline/__init__.py",

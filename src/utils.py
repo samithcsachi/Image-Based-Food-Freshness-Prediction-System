@@ -6,6 +6,10 @@ from PIL import Image
 import random
 import cv2
 import numpy as np 
+import pandas as pd
+import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix,roc_curve, auc
+
 
 
 def raw_img_dir(raw_data_dir, category_names):
@@ -120,6 +124,63 @@ def plot_blur_distribution(image_paths_dict):
     plt.xlabel("Sharpness Score")
     plt.ylabel("Count")
     plt.show()
+
+
+def save_confusion_matrix(y_true, y_pred, class_names, save_path):
+    cm = confusion_matrix(y_true, y_pred)
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
+                xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel("Predicted")
+    plt.ylabel("True")
+    plt.title("Confusion Matrix")
+    plt.tight_layout()
+    plt.savefig(save_path)
+    plt.close()
+
+def save_roc_curve(y_true, y_pred_probs, num_classes, save_path):
+    plt.figure(figsize=(8, 6))
+    if num_classes == 2:
+        fpr, tpr, _ = roc_curve(y_true, y_pred_probs[:,1])
+        plt.plot(fpr, tpr, label="ROC curve (AUC = %0.2f)" % auc(fpr, tpr))
+    else:
+        for i in range(num_classes):
+            fpr, tpr, _ = roc_curve(y_true == i, y_pred_probs[:, i])
+            plt.plot(fpr, tpr, label=f"Class {i} (AUC={auc(fpr,tpr):.2f})")
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.title("ROC Curve")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(save_path)
+    plt.close()
+
+def save_classification_report(y_true, y_pred, class_names, save_path):
+    report = classification_report(y_true, y_pred, target_names=class_names)
+    with open(save_path, "w") as f:
+        f.write(report)
+
+def save_error_analysis(test_ds, y_true, y_pred, class_names, save_path, n_samples=9):
+    wrong_idx = np.where(y_true != y_pred)[0]
+    images = []
+    for i in wrong_idx[:n_samples]:
+        img, _ = test_ds.unbatch().skip(i).take(1).as_numpy_iterator().__next__()
+        images.append(img)
+    plt.figure(figsize=(10, 10))
+    for n, img in enumerate(images):
+        plt.subplot(3, 3, n+1)
+        plt.imshow(img.astype("uint8"))
+        plt.title(f"True: {class_names[y_true[wrong_idx[n]]]}, Pred: {class_names[y_pred[wrong_idx[n]]]}")
+        plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(save_path)
+    plt.close()
+
+def save_optimization_comparison(results_dict, save_path):
+    df = pd.DataFrame(results_dict)
+    df.to_csv(save_path, index=False)
+
 
 
 
