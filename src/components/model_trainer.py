@@ -60,8 +60,7 @@ class ModelTrainer:
         base_model.trainable = False  
 
         inputs = tf.keras.Input(shape=input_shape)
-        x = tf.keras.applications.mobilenet_v2.preprocess_input(inputs)
-        x = base_model(x, training=False)
+        x = base_model(inputs, training=False)
         x = tf.keras.layers.GlobalAveragePooling2D()(x)
         outputs = tf.keras.layers.Dense(num_classes, activation='softmax')(x)
         model = tf.keras.Model(inputs, outputs)
@@ -74,6 +73,10 @@ class ModelTrainer:
         return model
     
     def train(self, model, train_ds, val_ds, epochs=50):
+        
+        normalization_layer = tf.keras.layers.Rescaling(1./255)
+        train_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
+        val_ds = val_ds.map(lambda x, y: (normalization_layer(x), y))
         
         early_stopping = EarlyStopping(
             monitor='val_loss',    

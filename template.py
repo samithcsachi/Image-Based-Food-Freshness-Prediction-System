@@ -18,8 +18,10 @@ list_of_paths = [
     "src/pipeline/training_pipeline.py",
     "src/pipeline/prediction_pipeline.py",
 
-    "src/detection.py",
-    "src/classification.py",
+    "src/api/main.py",
+
+    "src/app/app.py"
+
     "src/config.py",
     "src/utils.py",
       

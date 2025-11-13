@@ -37,20 +37,22 @@ class ModelEvaluation:
             batch_size=batch_size,
             shuffle=False
         )
-        return test_ds
+        class_names = test_ds.class_names
+        normalization_layer = tf.keras.layers.Rescaling(1./255)
+        test_ds = test_ds.map(lambda x, y: (normalization_layer(x), y))
+        return test_ds, class_names
 
     def model_eval(self):
         self.results_dir.mkdir(parents=True, exist_ok=True)
         model = tf.keras.models.load_model(self.model_dir / "mobilenetv2_baseline.keras")
 
-        test_ds = self.load_data()
+        test_ds, class_names = self.load_data()
         test_loss, test_acc = model.evaluate(test_ds)
         print(f"Test accuracy: {test_acc:.4f} | Test loss: {test_loss:.4f}")
 
         y_true = np.concatenate([y for x, y in test_ds], axis=0)
         y_pred_probs = model.predict(test_ds)
         y_pred = np.argmax(y_pred_probs, axis=1)
-        class_names = test_ds.class_names
         num_classes = len(class_names)
 
      

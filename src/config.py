@@ -4,6 +4,7 @@ import os
 class Config:
     PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+    DATA_DIR = os.path.join(PROJECT_ROOT, 'artifacts', 'data')
     RAW_DATA_DIR = os.path.join(PROJECT_ROOT, 'artifacts', 'data', 'raw')
     PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, 'artifacts', 'data', 'processed')
     MODEL_DIR = os.path.join(PROJECT_ROOT, 'artifacts', 'models')
