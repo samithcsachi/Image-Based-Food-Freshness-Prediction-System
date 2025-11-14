@@ -9,5 +9,4 @@ uvicorn
 python-dotenv
 Pillow
 scikit-learn
-ultralytics 
 gradio
