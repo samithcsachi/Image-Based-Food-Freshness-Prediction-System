@@ -10,7 +10,7 @@ Badge [source](https://shields.io/)
 
 # Image-Based-Food-Freshness-Prediction-System
 
-Image Based Food Freshness Prediction System is image classification project that is designed to classify the fruits and vegetables name and he freshness of fruits and vegetables based on image data using a convolutional neural network (CNN) model built with TensorFlow. The application provides a web interface for users to upload the picture or can use webcam to click the image so that it predicts name of the fruit or vegetable and whether it is Fresh or Rotten. Apple, Banana, Mango, Orange, Strawberry are the fruits the app can predict and Bellpepper, Carrot, Cucumber, Potato, Tomato are the Vegetables app can predict.
+Image Based Food Freshness Prediction System is an image classification project that is designed to classify the fruits and vegetables and the freshness of fruits and vegetables based on image data using a convolutional neural network (CNN) model built with TensorFlow. The application provides a web interface for users to upload a picture or use a webcam to click the image so that it predicts the name of the fruit or vegetable and whether it is Fresh or Rotten. Apple, Banana, Mango, Orange, Strawberry are the fruits the app can predict, and Bellpepper, Carrot, Cucumber, Potato, Tomato are the Vegetables the app can predict.
 
 Hugging Face Spaces Gradio App link : [https://huggingface.co/spaces/samithcs/Image-Based-Food-Freshness-Prediction-System](https://huggingface.co/spaces/samithcs/Image-Based-Food-Freshness-Prediction-System)
 
@@ -92,7 +92,7 @@ Category Model (MobileNetV2 Transfer Learning):
 - Test Accuracy: 99.91%
 - Test Loss: 0.0024
 
-## Limitation and what can be improved
+## Limitations and what can be improved
 
 - Limitations:
 
@@ -108,7 +108,7 @@ Category Model (MobileNetV2 Transfer Learning):
 
   - Binary Classification: The Fresh/Rotten output is binary and does not reflect degrees of freshness or specific types of spoilage.
 
-  - Explainability: The decision-making process of the model is not easily interpretable for end-users or operators without technical background.
+  - Explainability: The decision-making process of the model is not easily interpretable for end-users or operators without a technical background.
 
 - What Can Be Improved
 
@@ -184,7 +184,7 @@ python -m venv venv
 .\venv\Scripts\activate
 ```
 
-install the requirements
+Install the requirements
 
 ```bash
 pip install -r requirements.txt
