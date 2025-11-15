@@ -10,7 +10,7 @@ Badge [source](https://shields.io/)
 
 # Image-Based-Food-Freshness-Prediction-System
 
-Image Based Food Freshness Prediction System is an image classification project that is designed to classify the fruits and vegetables and the freshness of fruits and vegetables based on image data using a convolutional neural network (CNN) model built with TensorFlow. The application provides a web interface for users to upload a picture or use a webcam to click the image so that it predicts the name of the fruit or vegetable and whether it is Fresh or Rotten. Apple, Banana, Mango, Orange, Strawberry are the fruits the app can predict, and Bellpepper, Carrot, Cucumber, Potato, Tomato are the Vegetables the app can predict.
+The Image-Based Food Freshness Prediction System is an image classification project designed to classify fruits and vegetables and assess their freshness using a convolutional neural network (CNN) model built with TensorFlow. The application provides a web interface for users to upload a picture or use a webcam to capture an image, so it can predict the name of the fruit or vegetable and whether it is Fresh or Rotten. Apple, Banana, Mango, Orange, Strawberry are the fruits the app can predict, and Bellpepper, Carrot, Cucumber, Potato, Tomato are the Vegetables the app can predict.
 
 Hugging Face Spaces Gradio App link : [https://huggingface.co/spaces/samithcs/Image-Based-Food-Freshness-Prediction-System](https://huggingface.co/spaces/samithcs/Image-Based-Food-Freshness-Prediction-System)
 
