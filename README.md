@@ -63,12 +63,19 @@ Data Source Link : - [https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits
 ## Quick glance at the results
 
 ![Demo](assets/Food%20Freshness%20Detection.gif)
+
 ![HFDemo](assets/Hugging%20Face%20App.jpg)
+
 ![Confusion-Matrix-Category](assets/category_confusion_matrix.png)
+
 ![Error-Analysis](assets/category_error_analysis.png)
+
 ![ROC-Curve](assets/category_roc_curves.png)
+
 ![Confusion-Matrix-Category](assets/confusion_matrix.png)
+
 ![Error-Analysis](assets/error_analysis.png)
+
 ![ROC-Curve](assets/roc_curves.png)
 
 Freshness Model (MobileNetV2 Transfer Learning):
