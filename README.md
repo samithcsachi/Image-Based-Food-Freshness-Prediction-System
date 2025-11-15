@@ -89,58 +89,61 @@ Category Model (MobileNetV2 Transfer Learning):
 
 - Limitations:
 
-- Dataset Diversity: The current model is trained on a limited set of fruit and vegetable categories, which may limit its generalizability to produce types not represented in the dataset.
+  - Dataset Diversity: The current model is trained on a limited set of fruit and vegetable categories, which may limit its generalizability to produce types not represented in the dataset.
 
-- Image Quality Dependency: Prediction accuracy relies on the quality of the input image (lighting, angle, resolution, background). Poor image conditions can negatively impact detection and classification.
+  - Image Quality Dependency: Prediction accuracy relies on the quality of the input image (lighting, angle, resolution, background). Poor image conditions can negatively impact detection and classification.
 
-- Edge Cases and Minor Spoilage: The model may struggle to detect early or minor signs of spoilage, as these subtle changes are harder to capture and classify.
+  - Edge Cases and Minor Spoilage: The model may struggle to detect early or minor signs of spoilage, as these subtle changes are harder to capture and classify.
 
-- Real-time Integration: The system does not currently support real-time camera integration or deployment on mobile/edge devices.
+  - Real-time Integration: The system does not currently support real-time camera integration or deployment on mobile/edge devices.
 
-- Environment Sensitivity: The model has not been extensively tested across various environmental conditions—such as different light settings, temperatures, or packaging—which may affect its robustness.
+  - Environment Sensitivity: The model has not been extensively tested across various environmental conditions—such as different light settings, temperatures, or packaging—which may affect its robustness.
 
-- Binary Classification: The Fresh/Rotten output is binary and does not reflect degrees of freshness or specific types of spoilage.
+  - Binary Classification: The Fresh/Rotten output is binary and does not reflect degrees of freshness or specific types of spoilage.
 
-- Explainability: The decision-making process of the model is not easily interpretable for end-users or operators without technical background.
+  - Explainability: The decision-making process of the model is not easily interpretable for end-users or operators without technical background.
 
 - What Can Be Improved
-- Expand Dataset: Incorporate more diverse types of produce and real-world images to improve the model’s robustness and adaptability.
 
-- Multi-class and Multi-label Classification: Upgrade the system to predict degrees of freshness and specific spoilage types (e.g., mold, bruising).
+  - Expand Dataset: Incorporate more diverse types of produce and real-world images to improve the model’s robustness and adaptability.
 
-- Real-time and Edge Deployment: Optimize the model and pipeline for deployment on mobile devices and embedded systems for practical use in stores or warehouses.
+  - Multi-class and Multi-label Classification: Upgrade the system to predict degrees of freshness and specific spoilage types (e.g., mold, bruising).
 
-- Explainability & Transparency: Integrate explainable AI techniques, such as Grad-CAM or saliency maps, to visualize what the model focuses on during its predictions.
+  - Real-time and Edge Deployment: Optimize the model and pipeline for deployment on mobile devices and embedded systems for practical use in stores or warehouses.
 
-- Continuous Learning: Set up a pipeline for incremental learning so that the model can be regularly updated with new data and feedback.
+  - Explainability & Transparency: Integrate explainable AI techniques, such as Grad-CAM or saliency maps, to visualize what the model focuses on during its predictions.
 
-- Integration with IoT: Link the system with IoT sensors and monitoring devices to automate freshness tracking and alerts.
+  - Continuous Learning: Set up a pipeline for incremental learning so that the model can be regularly updated with new data and feedback.
+
+  - Integration with IoT: Link the system with IoT sensors and monitoring devices to automate freshness tracking and alerts.
 
 ## Lessons Learned and Recommendations
 
 - Lessons Learned
-- Transfer Learning with MobileNetV2: Leveraging pre-trained architectures like MobileNetV2 dramatically improved training efficiency and model accuracy, especially with a limited dataset. Transfer learning proved essential to achieve high performance without requiring massive amounts of labelled data.
 
-- Data Augmentation: Applying augmentation techniques (rotation, flipping, brightness/contrast changes) increased the robustness of the model against variations in image quality and environmental conditions but opted out because it was effecting the model performance
+  - Transfer Learning with MobileNetV2: Leveraging pre-trained architectures like MobileNetV2 dramatically improved training efficiency and model accuracy, especially with a limited dataset. Transfer learning proved essential to achieve high performance without requiring massive amounts of labelled data.
 
-- Early Stopping and Learning Rate Scheduling: Implementing early stopping guards against overfitting by halting training when the validation loss ceases to improve. Dynamic learning rate scheduling ensures more stable convergence during training, allowing the model to more effectively reach optimal solutions.
+  - Data Augmentation: Applying augmentation techniques (rotation, flipping, brightness/contrast changes) increased the robustness of the model against variations in image quality and environmental conditions but opted out because it was effecting the model performance
 
-- Regularization: Techniques like dropout and weight decay are critical for preventing overfitting, especially in models trained on relatively small datasets but opted out because it was effecting the model performance
+  - Early Stopping and Learning Rate Scheduling: Implementing early stopping guards against overfitting by halting training when the validation loss ceases to improve. Dynamic learning rate scheduling ensures more stable convergence during training, allowing the model to more effectively reach optimal solutions.
+
+  - Regularization: Techniques like dropout and weight decay are critical for preventing overfitting, especially in models trained on relatively small datasets but opted out because it was effecting the model performance
 
 - Recommendations
-- Broader Dataset Acquisition: Invest in collecting a more comprehensive dataset covering various produce types, handling conditions, and storage environments for broader applicability.
 
-- Advanced Augmentation: Consider more sophisticated augmentation, such as synthetic data generation or GAN-based approaches for rare spoilage scenarios.
+  - Broader Dataset Acquisition: Invest in collecting a more comprehensive dataset covering various produce types, handling conditions, and storage environments for broader applicability.
 
-- Model Explainability: Integrate explainability tools (e.g., Grad-CAM) to help users and stakeholders understand model decisions and build trust.
+  - Advanced Augmentation: Consider more sophisticated augmentation, such as synthetic data generation or GAN-based approaches for rare spoilage scenarios.
 
-- Continuous Monitoring and Retraining: Set up feedback loops to capture new data and edge cases, enabling periodic retraining for improved accuracy and adaptability.
+  - Model Explainability: Integrate explainability tools (e.g., Grad-CAM) to help users and stakeholders understand model decisions and build trust.
 
-- Edge Deployment Optimization: Focus future iterations on lightweight model architectures and quantization strategies for practical deployment on mobile or embedded devices.
+  - Continuous Monitoring and Retraining: Set up feedback loops to capture new data and edge cases, enabling periodic retraining for improved accuracy and adaptability.
 
-- Integration Workflow: Develop user-friendly interfaces (web, mobile), possibly leveraging frameworks like FastAPI and Gradio, for seamless real-world application and adoption.
+  - Edge Deployment Optimization: Focus future iterations on lightweight model architectures and quantization strategies for practical deployment on mobile or embedded devices.
 
-- Mobile App Development for Real-Time Detection: Build a dedicated mobile application capable of detecting fruit and vegetable types and assessing their freshness in real time using a smartphone camera. This will make the solution highly accessible and practical for use by consumers, retailers, and supply chain professionals.
+  - Integration Workflow: Develop user-friendly interfaces (web, mobile), possibly leveraging frameworks like FastAPI and Gradio, for seamless real-world application and adoption.
+
+  - Mobile App Development for Real-Time Detection: Build a dedicated mobile application capable of detecting fruit and vegetable types and assessing their freshness in real time using a smartphone camera. This will make the solution highly accessible and practical for use by consumers, retailers, and supply chain professionals.
 
 ## Run Locally
 
